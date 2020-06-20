@@ -5,17 +5,18 @@ import Constants from 'expo-constants';
 
 export default function Login({ navigation }) {
 
-  const [emailOutput, setEmail] = useState("")
-  const [passwordOutput, setPassword] = useState("")
-  const [token, setToken] = useState("")
-  const [loggingIn, setLoggingIn] = useState(false)
+  const [emailOutput, setEmail] = useState("");
+  const [passwordOutput, setPassword] = useState("");
+  const [token, setToken] = useState("");
+  const [loggingIn, setLoggingIn] = useState(false);
   
-
+  const URL = 'https://reqres.in/api/login';
 
   async function submit () {
     try {
       setLoggingIn(true);
-      let response = await fetch('https://reqres.in/api/login', {
+
+      let response = await fetch(URL, {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -95,13 +96,14 @@ const styles = StyleSheet.create({
     height: 40,
     width: 250, 
     padding: 5,
-    borderColor: 'gray', 
-    borderWidth: 1
+    borderColor: '#222222', 
+    borderWidth: 1,
+
   },
   button: {
     alignItems: "center",
     padding: 10,
-    backgroundColor: "#FF6347",
+    backgroundColor: "#FE5F00",
     width: 150,
     marginTop: 25
   },

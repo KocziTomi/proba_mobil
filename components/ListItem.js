@@ -24,7 +24,7 @@ export default function ListItem(props) {
 const styles = StyleSheet.create({
     item: {
       borderRadius: 20,
-      borderColor: '#000',
+      borderColor: '#707070',
       borderWidth: 2,
       backgroundColor: '#fff',
       height: 150,
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
         height: undefined, 
         width: undefined,
     },
-  });
+});

@@ -8,9 +8,11 @@ export default function Home() {
   const [items, setItems] = useState([]);
   const [isItemsChanged, setIsItemsChanged] = useState(false);
 
+  const URL = 'https://reqres.in/api/users?page=2';
+
   async function getItems () {
 
-      let response = await fetch('https://reqres.in/api/users?page=2');
+      let response = await fetch(URL);
       let json = await response.json();
 
       setItems(json.data);
@@ -37,7 +39,6 @@ export default function Home() {
       />
     </View>
   );
-
 }
 
 

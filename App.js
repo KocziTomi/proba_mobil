@@ -12,7 +12,7 @@ export default function App() {
 
   const Stack = createStackNavigator();
   
- return (
+  return (
     <NavigationContainer>
       <Stack.Navigator 
         initialRouteName="Login"

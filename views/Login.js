@@ -7,23 +7,36 @@ export default function Login({ navigation }) {
 
   const [emailOutput, setEmail] = useState("")
   const [passwordOutput, setPassword] = useState("")
+  const [token, setToken] = useState("")
   
-  const submit = () => {
-    
-    fetch('https://reqres.in/api/login', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-                'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: emailOutput,
-        password: passwordOutput
-      })
-    }).then(response => response.json())
-        .then(responseData => {
-          console.log("POST", "Response Body -> " + JSON.stringify(responseData))
-        })
+  async function submit () {
+    try {
+      let response = await fetch(
+        'https://reqres.in/api/login', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+                    'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: emailOutput,
+            password: passwordOutput
+          })
+      });
+
+      let json = await response.json();
+      
+      if(typeof(json.error) == 'undefined'){
+        setToken(json.token)
+        navigation.navigate('Home')
+        return;
+      }
+      else {
+        throw json.error;
+      }
+    } catch (error) {
+      console.log('ERROR message: '+ error);
+    }
         
   }
 

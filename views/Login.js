@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Image, TextInput, Alert, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, Text, View, TextInput,  TouchableOpacity} from 'react-native';
+import Logo from '../assets/cubicfox_logo.svg';
+import Constants from 'expo-constants';
 
 export default function Login({ navigation }) {
 
   const [emailOutput, setEmail] = useState("")
   const [passwordOutput, setPassword] = useState("")
   const [token, setToken] = useState("")
+  const [loggingIn, setLoggingIn] = useState(false)
   
+
+
   async function submit () {
     try {
+      setLoggingIn(true);
       let response = await fetch('https://reqres.in/api/login', {
           method: 'POST',
           headers: {
@@ -22,29 +26,28 @@ export default function Login({ navigation }) {
             password: passwordOutput
           })
       });
-
+    
       let json = await response.json();
       
       if(typeof(json.error) == 'undefined'){
-        setToken(json.token)
-        navigation.navigate('Home')
+        setToken(json.token);
+        setLoggingIn(false);
+        navigation.navigate('Home');
         return;
       }
       else {
         throw json.error;
       }
     } catch (error) {
-      alert(error);
+      setLoggingIn(false);
+      alert(error);  
     }    
   }
 
   return (
-    
     <View style={styles.container}>
-      <Image
-        source= {require('../assets/logo.png')}
-        style={styles.logo}
-      />
+
+      <Logo style={styles.logo} width={150} height={120} />
 
       <TextInput
         placeholder="Email"
@@ -52,6 +55,7 @@ export default function Login({ navigation }) {
         style={styles.input}
         onChangeText={text => setEmail(text)}
       />
+      
 
       <TextInput
         placeholder="Password"
@@ -60,8 +64,10 @@ export default function Login({ navigation }) {
         secureTextEntry={true}
         onChangeText={text => setPassword(text)}
       />
+      
 
       <TouchableOpacity
+        disabled={loggingIn}
         style={styles.button}
         onPress={submit}
       >
@@ -77,12 +83,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: Constants.statusBarHeight,
   },
   logo: {
-    width: 150,
-    height: 150,
-    marginBottom: 40
+    marginBottom: 40,
+    marginTop:50
   },
   input: {
     marginTop:10,
@@ -98,10 +103,10 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#FF6347",
     width: 150,
-    marginTop: 10
+    marginTop: 25
   },
   button_text:{
     color:'#fff'
-  }
+  },
 
 });

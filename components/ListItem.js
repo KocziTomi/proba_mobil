@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Image, TextInput, Alert, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image} from 'react-native';
 import 'react-native-gesture-handler';
 
 
 
 export default function ListItem(props) {
-    
     return(
         <View style={styles.item}>
-            <View style={styles.image_container}>
-
-            </View>
+                <Image 
+                    source={{uri: props.avatarUri }} 
+                    style={styles.image}
+                />
             <View style={styles.data_container}>
-                <Text style={styles.name}>{props.name}Név</Text>
-                <Text style={styles.email} numberOfLines={2}>{props.email}Email</Text>
-                <Text style={styles.id}>{props.id}ID:</Text>
+                <Text style={styles.name}>{props.name}</Text>
+                <Text style={styles.email} numberOfLines={2}>{props.email}</Text>
+                <Text style={styles.id}>ID: {props.id}</Text>
             </View>
         </View>
     );
@@ -41,15 +41,14 @@ const styles = StyleSheet.create({
     id: {
       fontWeight: 'bold'
     },
-    image_container: {
-        flex: 1,
-        backgroundColor: '#000',
-        
-    },
     data_container: {
         flex: 2,
         paddingLeft: 20,
-        justifyContent: 'space-evenly'
-        
+        justifyContent: 'space-evenly' 
+    },
+    image: {
+        flex:1, 
+        height: undefined, 
+        width: undefined,
     },
   });

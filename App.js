@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, Image, TextInput, Alert, TouchableOpacity } from 'react-native';
-import { validate } from 'validate.js';
-import constraints from './constraints';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator} from '@react-navigation/stack';

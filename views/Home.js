@@ -1,50 +1,43 @@
-import React from 'react';
-import { SafeAreaView, View, VirtualizedList, StyleSheet, Text } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { View, VirtualizedList, StyleSheet, Text } from 'react-native';
 import Constants from 'expo-constants';
 import Item from '../components/ListItem'
 
-
-
-
 export default function Home() {
- fetch('https://reqres.in/api/users?page=2', {
-    method: 'GET',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    }
-  }).then((response) => response.json())
-    .then((json) => {
-      console.log(json); 
-    })
 
-  const DATA = [];
+  const [items, setItems] = useState([]);
+  const [isItemsChanged, setIsItemsChanged] = useState(false);
 
-  const getItem = (data, index) => {
-    return {
-      id: Math.random().toString(12).substring(0),
-      title: `Item ${index+1}`
-    }
+  async function getItems () {
+
+      let response = await fetch('https://reqres.in/api/users?page=2');
+      let json = await response.json();
+
+      setItems(json.data);
+      return;
   }
 
-  const getItemCount = (data) => {
-    return 50;
-  }
+  useEffect(() => {
+
+    getItems();
+
+  }, [isItemsChanged]);
+
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>My Friends</Text>
       <VirtualizedList
-        data={DATA}
-        initialNumToRender={4}
+        data={items}
+        getItem={(data, index) => data[index]}
+        getItemCount={data => data.length}
         renderItem={({ item }) =>
-        <Item title={item.title} />}
-        keyExtractor={item => item.key}
-        getItemCount={getItemCount}
-        getItem={getItem}
+        <Item avatarUri={item.avatar} name={item.first_name + ' ' + item.last_name}  email={item.email} id={item.id}/>}
+        keyExtractor={item => item.id.toString()}
       />
-    </SafeAreaView>
+    </View>
   );
+
 }
 
 

@@ -11,8 +11,7 @@ export default function Login({ navigation }) {
   
   async function submit () {
     try {
-      let response = await fetch(
-        'https://reqres.in/api/login', {
+      let response = await fetch('https://reqres.in/api/login', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -35,9 +34,8 @@ export default function Login({ navigation }) {
         throw json.error;
       }
     } catch (error) {
-      console.log('ERROR message: '+ error);
-    }
-        
+      alert(error);
+    }    
   }
 
   return (
@@ -50,6 +48,7 @@ export default function Login({ navigation }) {
 
       <TextInput
         placeholder="Email"
+        autoCapitalize="none"
         style={styles.input}
         onChangeText={text => setEmail(text)}
       />

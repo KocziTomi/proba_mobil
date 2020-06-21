@@ -4,22 +4,22 @@ Az applikáció React Native segítségével készült. A reqres.in API biztosí
 
 ## Szerkezet
 
-A megvalósítás során szempont volt a komponens alapú szemlélet, ezért a különálló főbb komponensek külön fájlban/mappában találhatóak:__
+A megvalósítás során szempont volt a komponens alapú szemlélet, ezért a különálló főbb komponensek külön fájlban/mappában találhatóak:
 
-1. views         *// Ez tartalmazza az alkalmazás Screen-jeit, az itt található fájlok több komponensből is állhatnak*__
- - Login.js     *// Ez tartalmazza a Login Screen-t és a hozzá kapcsolódó function-ket*__
- - Home.js      *// Ez tartalmazza a Home Screen-t és a hozzá kapcsolódó function-ket, valamint a **listItem** komponenst*__
+1. views        *// Ez tartalmazza az alkalmazás Screen-jeit, az itt található fájlok több komponensből is állhatnak*
+ - Login.js     *// Ez tartalmazza a Login Screen-t és a hozzá kapcsolódó function-ket*
+ - Home.js      *// Ez tartalmazza a Home Screen-t és a hozzá kapcsolódó function-ket, valamint a **listItem** komponenst*
         
-2. components    *// Ez tartalmaz egy kisebb komponenst, amely egy Screen alkotóelemeként szolgál*__
- - listItem.js  *// Ez tartalmazza a Home Screen-ben található border-box vázát, a valós adatokat props-ként kapja a Home-ból*__
+2. components    *// Ez tartalmaz egy kisebb komponenst, amely egy Screen alkotóelemeként szolgál*
+ - listItem.js  *// Ez tartalmazza a Home Screen-ben található border-box vázát, a valós adatokat props-ként kapja a Home-ból*
 
-Általánosságban minden fájl az alábbi struktúrát használja:____
+Általánosságban minden fájl az alábbi struktúrát használja:
 
-- importok__
+- importok
 - komponens (function-ként)
- - useState & variable deklarációk__
- - function-ök: GET, POST requestek__
- - return: React Native komponensek__
+ - useState & variable deklarációk
+ - function-ök: GET, POST requestek
+ - return: React Native komponensek
 - StyleSheet
  
     

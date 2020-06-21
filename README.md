@@ -7,11 +7,11 @@ Az applikáció React Native segítségével készült. A reqres.in API biztosí
 A megvalósítás során szempont volt a komponens alapú szemlélet, ezért a különálló főbb komponensek külön fájlban/mappában találhatóak:
 
 1. views        *// Ez tartalmazza az alkalmazás Screen-jeit, az itt található fájlok több komponensből is állhatnak*
- - Login.js     *// Ez tartalmazza a Login Screen-t és a hozzá kapcsolódó function-ket*
- - Home.js      *// Ez tartalmazza a Home Screen-t és a hozzá kapcsolódó function-ket, valamint a **listItem** komponenst*
+   * Login.js     *// Ez tartalmazza a Login Screen-t és a hozzá kapcsolódó function-ket*
+   * Home.js      *// Ez tartalmazza a Home Screen-t és a hozzá kapcsolódó function-ket, valamint a **listItem** komponenst*
         
 2. components    *// Ez tartalmaz egy kisebb komponenst, amely egy Screen alkotóelemeként szolgál*
- - listItem.js  *// Ez tartalmazza a Home Screen-ben található border-box vázát, a valós adatokat props-ként kapja a Home-ból*
+   * listItem.js  *// Ez tartalmazza a Home Screen-ben található border-box vázát, a valós adatokat props-ként kapja a Home-ból*
 
 Általánosságban minden fájl az alábbi struktúrát használja:
 

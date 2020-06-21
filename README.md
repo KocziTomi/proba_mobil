@@ -26,7 +26,7 @@ A megvalósítás során szempont volt a komponens alapú szemlélet, ezért a k
 ## Elérhetőség/indítás
 
 Az Expo publikációnak köszönhetően az alábbi linken QR-kód használatával:
-[expo link](https://expo.io/@koczitomi/proba)
+[Mobil Próbafeladat - Expo link](https://expo.io/@koczitomi/proba)
 
 *VAGY*
 
